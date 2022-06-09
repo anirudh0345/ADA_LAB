@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int binary_search(int arr[],int key,int low,int high)
+{
+	int k=0;
+	int mid;
+	mid =(low+high)/2;
+	if(arr[mid] == key)
+	{
+			printf("Element %d found",key);
+			return -1;
+	}
+	else if(low == high)
+	{
+		printf("Element %d not found",key);	
+	}
+	else if(arr[mid] > key)
+	{
+		while(k<1000)
+		{
+			k++;
+		}
+		high = mid;
+		return binary_search(arr,key,low,high);   
+	}
+	else 
+	{
+		while(k<1000)
+		{
+			k++;
+		}
+		return binary_search(arr,key,low,high);   
+	}
+}
+
+
+
+int main()
+{	
+	int N,i,Key;
+	int high,low;
+	int arr[5000];
+	time_t start,end;
+	printf("Binary search using recursion");
+	printf("\nEnter the number of elements: ");
+	scanf("%d",&N);
+	for(i=0;i<N;i++)
+	{
+	   arr[i] = i;
+	}
+	i = 0;
+	low = 0;
+	high = N;
+	printf("\nEnter the element to search: ");
+	scanf("%d",&Key);
+	start = clock();
+	binary_search(arr,Key,low,high);
+	end = clock();
+	printf("Time taken to find element is %f",(difftime(end,start)));
+	return 0;
+}
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int linear_search(int arr[],int j,int key,int Size)
+{
+	int k=0;
+	if(arr[j] == key)
+	{
+			printf("Element %d found at position %d",key,j);
+			return -1;
+	}
+	else if(j>=Size)
+	{
+		    printf("Element not found at");
+			return -1;
+	}
+	else
+	{
+		while(k<1000)
+		{
+			k++;
+		}
+		   j=j+1;
+		return linear_search(arr,j,key,Size);
+	}
+}
+
+
+
+int main()
+{	
+	int N,i,Key;
+	int arr[5000];
+	time_t start,end;
+	printf("Linear search using recursion");
+	printf("\nEnter the number of elements: ");
+	scanf("%d",&N);
+	for(i=0;i<N;i++)
+	{
+	   arr[i] = i;
+	}
+	i = 0;
+	printf("\nEnter the element to search: ");
+	scanf("%d",&Key);
+	start = clock();
+	linear_search(arr,i,Key,N);
+	end = clock();
+	printf("\nTime taken to find element is %f",(difftime(end,start)));
+	return 0;
+}
