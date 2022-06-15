@@ -91,6 +91,29 @@ int linear_search(int arr[],int j,int key,int Size)
 		return linear_search(arr,j,key,Size);
 	}
 }
+
+int main()
+{	
+	int N,i,Key;
+	int arr[5000];
+	time_t start,end;
+	printf("Linear search using recursion");
+	printf("\nEnter the number of elements: ");
+	scanf("%d",&N);
+	for(i=0;i<N;i++)
+	{
+	   arr[i] = i;
+	}
+	i = 0;
+	printf("\nEnter the element to search: ");
+	scanf("%d",&Key);
+	start = clock();
+	linear_search(arr,i,Key,N);
+	end = clock();
+	printf("\nTime taken to find element is %f",(difftime(end,start)));
+	return 0;
+}
+
  //selection sort
  
  #include <stdio.h>
@@ -139,27 +162,6 @@ int main()
 }
 
 
-int main()
-{	
-	int N,i,Key;
-	int arr[5000];
-	time_t start,end;
-	printf("Linear search using recursion");
-	printf("\nEnter the number of elements: ");
-	scanf("%d",&N);
-	for(i=0;i<N;i++)
-	{
-	   arr[i] = i;
-	}
-	i = 0;
-	printf("\nEnter the element to search: ");
-	scanf("%d",&Key);
-	start = clock();
-	linear_search(arr,i,Key,N);
-	end = clock();
-	printf("\nTime taken to find element is %f",(difftime(end,start)));
-	return 0;
-}
 
 https://github.com/anirudh0345/ADA_LAB/issues/1#issue-1272587164
 
