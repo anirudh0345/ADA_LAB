@@ -1,3 +1,6 @@
+//BFS to find all nodes reachable from a starting node
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -63,3 +66,7 @@ int main()
     }
     return 0;
 }
+
+//DFS to find if graph connected or not
+
+
