@@ -23,3 +23,40 @@ int main() {
     }
     return 0;
 }
+
+int* icecreamParlor(int m, int arr_count, int* arr, int* result_count) {
+    *result_count = 2;
+    int i,j;
+    int k=1;
+    int x,y,z;
+    int b;
+    int *a = malloc(2 * sizeof(int));
+    b = arr_count;
+    int ice[b][b];
+    for(i=0;i<b;i++)
+    {
+        k = 0;
+        for(j=0;j<b;j++)
+        {
+            ice[i][j] = arr[i]+arr[k];
+            k++;
+        }
+    }
+     for(x=0;x<b;x++)
+    {
+        for(y=0;y<b;y++)
+        {
+            if(ice[x][y]==m & x!=y)
+            {
+                a[0]=y+1;
+                a[1]=x+1;
+            }
+            else
+            {
+                z++;
+            }
+        }
+    }
+    
+    return a;
+}
