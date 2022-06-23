@@ -70,3 +70,72 @@ int main()
 //DFS to find if graph connected or not
 
 
+#include <stdio.h>
+int visited[9];
+int size;
+int arr[9][9];
+int stack[10];
+int top = -1;
+int j = 1;
+int flag = 0;
+void dfs(int v)
+{
+    visited[v]=1;
+    stack[++top]=v;
+    for(int i=1;i<=size;i++)
+    {
+        if(arr[v][i]==1 & !visited[i])
+        {
+            flag = 1;
+            j++;
+            dfs(i);
+        }
+    }
+    if(flag==0)
+    {
+        for(int k=1;k<=size;k++)
+    {
+        if(arr[stack[top]][k]==1 & !visited[k])
+        {
+            flag = 1;
+            j++;
+            dfs(k);
+        }
+    }
+    if(flag==0)
+    {
+        top--;
+    }
+    }
+}
+int main()
+{
+    printf("DFS to check whether a graph is connected or not");
+    int v;
+    printf("\nEnter the size of the adjacency matrix(0-9)\n");
+    scanf("%d",&size);
+    printf("Enter the matrix elements(in 1's and 0's)");
+    for(int i=0;i<size;i++)
+    {
+        for(int j=0;j<size;j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    for(int h=1;h<=size;h++)
+    {
+        visited[h] = 0;
+    }
+    dfs(1);
+    if(j==size)
+    {
+        printf("\nGraph is connected");
+    }
+    else
+    {
+        printf("\nGraph is not connected");
+    }
+    
+    return 0;
+}
+
