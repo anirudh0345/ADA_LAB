@@ -58,11 +58,10 @@ int main()
                 }
             }
         }
-        else
+         else
         {
             flag++;
         }
-       
     }
     return 0;
 }Output:
