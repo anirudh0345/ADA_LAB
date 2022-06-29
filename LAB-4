@@ -36,6 +36,7 @@ int main()
         if(arr[choice][l] == 1)
         {
             neighbour[m] = l;
+            printf(" %d ",m);//These are immediate neighbours of selected node.
         }
         else{
             flag++;
