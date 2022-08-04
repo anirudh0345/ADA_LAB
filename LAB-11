@@ -1,1 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+int max(int a ,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+void warshall(int t[10][10],int n)
+{
+    int i,j,k;
+    for(k=1;k<=n;k++)
+    {
+        for(i=1;i<=n;i++)
+        {
+            for(j=1;j<=n;j++)
+            {
+                t[i][j] = max(t[i][j],t[i][k] && t[k][j]);
+            }
+        }
+    }
+}
 
+int main()
+{
+     int p[10][10];
+    int n,e,u,v,i,j;
+    int a = 0;
+    int b = 0;
+    printf("Enter the number of vertices: \n");
+    scanf("%d",&n);
+    printf("\nEnter the number of edges: \n");
+    scanf("%d",&e);
+    for(i=1;i<=e;i++)
+    {
+        printf("\nEnter the starting vertex of edge %d: ",i);
+        scanf("%d",&u);
+        printf("\nEnter the end vertex of edge %d: ",i);
+        scanf("%d",&v);
+        a = u;
+        b = v;
+        p[a][b] = 1;
+    }
+    printf("\n");
+    printf("Resultant matrix is: \n");
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;i<=n;j++)
+        {
+            printf("%d ",p[i][j]);
+        }
+        printf("\n");
+    }
+    warshall(p,n);
+    printf("\nTransitive closure: \n");
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            printf("%d ",p[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
