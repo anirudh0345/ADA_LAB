@@ -1,1 +1,74 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+int max(int a,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+int main()
+{
+    int n,m;
+    printf("Enter the number of objects: \n");
+    scanf("%d",&n);
+    printf("\nEnter the Knapsack capacity: \n");
+    scanf("%d",&m);
+    int k = n+1;
+    int l = m+1;
+    int w[k];
+    int p[k];
+    int knapsack[k][m];
+    printf("Enter the weights of the objects: \n");
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&w[i]);
+    }
+    printf("Enter the price/profit of the objects: \n");
+    for(int j=1;j<=n;j++)
+    {
+        scanf("%d",&p[j]);
+    }
+    for(int i=0;i<=n;i++)
+    {
+        for(int j=0;j<=m;j++)
+        {
+            if((i==0) || (j==0))
+            {
+                knapsack[i][j]=0;
+            }
+            else if(w[i]<=j)
+            {
+                knapsack[i][j] = max(p[i]+knapsack[i-1][j-w[i]],knapsack[i-1][j]);
+            }
+            else
+            {
+                knapsack[i][j] = knapsack[i-1][j];
+            }
+        }
+    }
+    printf("Optimal solution: \n");
+    int x = n;
+    int y = m;
+    printf("1:Represents objects included in knapsack: \n");
+    while(x>0 && y>=0)
+    {
+        if(knapsack[x][y] == knapsack[x-1][y])
+        {
+            printf("%d = 0\n",x);
+            x--;
+        }
+        else
+        {
+            printf("%d = 1\n",x);
+            y = y-w[x];
+            x--;
+        }
+    }
+    return 0;
+}
